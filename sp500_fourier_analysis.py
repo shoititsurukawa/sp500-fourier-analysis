@@ -40,9 +40,9 @@ harmonics = harmonics[np.argsort(harmonics)]  # sort by frequency
 y_fourier = np.ones_like(y)*a0
 
 print("Harmonics:")
-print("-------------------------------")
-print("n   Frequency      Amplitude")
-print("-------------------------------")
+print("-------------------------------------")
+print("n   Period (days)    Amplitude")
+print("-------------------------------------")
 
 for i,k in enumerate(harmonics,1):
 
@@ -50,7 +50,9 @@ for i,k in enumerate(harmonics,1):
     phi = np.angle(Y[k])
     f = freq[k]
 
-    print(f"{i:2d}  {f:10.6f}   {A:10.4f}")
+    T = 1/f
+
+    print(f"{i:2d}   {T:10.2f}      {A:10.4f}")
 
     y_fourier += A*np.cos(2*np.pi*f*t + phi)
 
